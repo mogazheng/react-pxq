@@ -29,7 +29,13 @@
 
 .icon-jiantou-copy-copy:before { content: "\e679"; }
 
-.icon-catalog:before { content: "\e716"; }
+.icon-catalog:before {
+  content: "\e716";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
 .icon-jingyin:before { content: "\e674"; }
 

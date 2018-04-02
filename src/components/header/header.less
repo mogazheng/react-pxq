@@ -8,10 +8,12 @@
   top: 0;
   left: 0;
   z-index: 10;
-  .wh(100%, 88px);
+  .wh(100%, 100px);
   .header-slide-icon{
+    height: 100px;
+    width: 100px;
     .font(36px, #fff);
-    .positionLeft;
+    .positionLeft(@left: 0px);
   }
   .header-title{
     .font(40px, #fff);
@@ -25,7 +27,7 @@
   }
   .nav-slide-list{
     .coverScreen(fixed);
-    top: 88px;
+    top: 100px;
     display: flex;
     flex-direction: column;
     .nav-link{

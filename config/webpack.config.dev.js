@@ -158,6 +158,15 @@ module.exports = {
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
+            test:/\.(css|less)$/,
+            use: [
+              'style-loader',
+              'css-loader',
+              {loader: 'less-loader', options: {modifyVars: require('../package.json').theme}},
+            ],
+            include: /node_modules/,
+          },
+          {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
@@ -210,6 +219,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test:/\.(css|less)$/,
+            exclude: /node_modules/,
             use: [
               require.resolve('style-loader'),
               {

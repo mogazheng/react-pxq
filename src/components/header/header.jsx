@@ -10,6 +10,7 @@ export default class PublicHeader extends Component{
     record: PropTypes.any,
     title: PropTypes.string.isRequired,
     confirm: PropTypes.any,
+    color: PropTypes.string
   }
 
   state = {
@@ -31,7 +32,7 @@ export default class PublicHeader extends Component{
 
   render(){
     return(
-      <header className="header-container">
+      <header className="header-container" style={this.props.color && {backgroundColor: this.props.color}}>
         <span className="header-slide-icon icon-catalog" onClick={this.toggleNav}></span>
         <span className="header-title">{this.props.title}</span>
         {
@@ -50,6 +51,7 @@ export default class PublicHeader extends Component{
                 <NavLink to="/" exact className="nav-link icon-jiantou-copy-copy">首页</NavLink>
                 <NavLink to="/brokerage" exact className="nav-link icon-jiantou-copy-copy">提现</NavLink>
                 <NavLink to="/helpcenter" exact className="nav-link icon-jiantou-copy-copy">帮助中心</NavLink>
+                <NavLink to="/tabbardemo" exact className="nav-link icon-jiantou-copy-copy">TabBar</NavLink>
               </aside>
             }
         </ReactCSSTransitionGroup>
