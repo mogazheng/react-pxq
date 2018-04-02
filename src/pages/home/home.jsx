@@ -11,7 +11,7 @@ import PublicHeader from '@/components/header/header';
 import PublicAlert from '@/components/alert/alert';
 import TouchableOpacity from '@/components/TouchableOpacity/TouchableOpacity';
 import mixin, { padStr } from '@/utils/mixin';
-import './home.css';
+import './home.less';
 
 @mixin({padStr})
 class Home extends Component {
@@ -31,7 +31,7 @@ class Home extends Component {
    * 已选择的商品数据
    * @type {Array}
    */
-  selectedProList = []; 
+  selectedProList = [];
 
   /**
    * 将表单数据保存至redux，保留状态
@@ -53,7 +53,7 @@ class Home extends Component {
     }
     this.props.saveFormData(value, type);
   }
-  
+
   /*
   上传图片，并将图片地址存到redux，保留状态
    */
@@ -89,7 +89,7 @@ class Home extends Component {
       alertTip,
     })
   }
-  
+
   // 关闭弹款
   closeAlert = () => {
     this.setState({
@@ -97,7 +97,7 @@ class Home extends Component {
       alertTip: '',
     })
   }
-  
+
   // 初始化数据，获取已选择的商品
   initData = props => {
     this.selectedProList = [];
@@ -121,10 +121,10 @@ class Home extends Component {
   componentWillMount(){
     this.initData(this.props);
   }
-  
+
 
   render() {
-    
+
     return (
       <main className="home-container">
         <PublicHeader title='首页' record />
@@ -176,7 +176,7 @@ export default connect(state => ({
   formData: state.formData,
   proData: state.proData,
 }), {
-  saveFormData, 
+  saveFormData,
   saveImg,
   clearData,
   clearSelected,

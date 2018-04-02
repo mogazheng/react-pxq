@@ -3,7 +3,7 @@ import { is, fromJS } from 'immutable';
 import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
 import PublicHeader from '@/components/header/header';
 import RecordList from './components/recordList';
-import './record.css';
+import './record.less';
 
 class Record extends Component {
   state = {
@@ -25,7 +25,7 @@ class Record extends Component {
       case 'failed':
         flagBarPos = '83%';
       break;
-      default: 
+      default:
         flagBarPos = '17%';
     }
     this.setState({flagBarPos})
@@ -43,7 +43,7 @@ class Record extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
   }
-  
+
   componentWillMount(){
     // 初始化设置头部底部标签位置
     let type = this.props.location.pathname.split('/')[2];

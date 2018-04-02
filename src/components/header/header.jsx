@@ -3,7 +3,7 @@ import { is, fromJS } from 'immutable';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './header.css';
+import './header.less';
 
 export default class PublicHeader extends Component{
   static propTypes = {
@@ -15,7 +15,7 @@ export default class PublicHeader extends Component{
   state = {
     navState: false, //导航栏是否显示
   };
-  
+
   // 切换左侧导航栏状态
   toggleNav = () => {
     this.setState({navState: !this.state.navState});
@@ -53,7 +53,7 @@ export default class PublicHeader extends Component{
               </aside>
             }
         </ReactCSSTransitionGroup>
-        
+
       </header>
     );
   }

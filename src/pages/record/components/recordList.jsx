@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { is, fromJS } from 'immutable';
 import API from '@/api/api';
-import './recordList.css';
+import './recordList.less';
 
 class RecordList extends Component{
-  
+
   state = {
     recordData: [],
   }
-  
+
   /**
    * 初始化获取数据
    * @param  {string} type 数据类型

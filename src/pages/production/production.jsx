@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getProData, togSelectPro, editPro } from '@/store/production/action';
 import PropTypes from 'prop-types';
 import PublicHeader from '@/components/header/header';
-import './production.css';
+import './production.less';
 
 class Production extends Component{
   static propTypes = {
@@ -13,7 +13,7 @@ class Production extends Component{
     togSelectPro: PropTypes.func.isRequired,
     editPro: PropTypes.func.isRequired,
   }
-  
+
   /**
    * 添加或删减商品，交由redux进行数据处理，作为全局变量
    * @param  {int} index 编辑的商品索引
@@ -26,7 +26,7 @@ class Production extends Component{
     }
     this.props.editPro(index, currentNum);
   }
-  
+
   // 选择商品，交由redux进行数据处理，作为全局变量
   togSelect = index => {
     this.props.togSelectPro(index);
@@ -35,7 +35,7 @@ class Production extends Component{
   shouldComponentUpdate(nextProps, nextState) {
     return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
   }
-  
+
   componentDidMount(){
     if(!this.props.proData.dataList.length){
       this.props.getProData();
@@ -74,7 +74,7 @@ class Production extends Component{
 export default connect(state => ({
   proData: state.proData,
 }), {
-  getProData, 
-  togSelectPro, 
+  getProData,
+  togSelectPro,
   editPro
 })(Production);

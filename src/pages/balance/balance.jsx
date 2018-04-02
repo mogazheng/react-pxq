@@ -4,7 +4,7 @@ import PublicHeader from '@/components/header/header';
 import TouchableOpacity from '@/components/TouchableOpacity/TouchableOpacity';
 import PublicAlert from '@/components/alert/alert';
 import API from '@/api/api';
-import './balance.css';
+import './balance.less';
 
 class BrokeRage extends Component{
   state = {
@@ -12,7 +12,7 @@ class BrokeRage extends Component{
     alertStatus: false, //弹框状态
     alertTip: '', //弹框提示文字
     balance: {  //可提现金额
-      balance: 0, 
+      balance: 0,
     },
   }
   // 初始化数据
@@ -25,7 +25,7 @@ class BrokeRage extends Component{
       console.error(err);
     }
   }
-  
+
   /**
    * 格式化输入数据
    * 格式为微信红包格式：最大 200.00
@@ -47,7 +47,7 @@ class BrokeRage extends Component{
       this.setState({applyNum: value});
     }
   }
-  
+
   /**
    * 提交判断条件
    */
@@ -66,7 +66,7 @@ class BrokeRage extends Component{
       alertTip,
     })
   }
-  
+
   /*
   关闭弹框
    */
