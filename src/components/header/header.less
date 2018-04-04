@@ -8,37 +8,38 @@
   top: 0;
   left: 0;
   z-index: 10;
-  .wh(100%, 100px);
+  .wh(100%, 46px);/*no*/
   .header-slide-icon{
-    height: 100px;
-    width: 100px;
-    .font(36px, #fff);
+    height: 46px; /*no*/
+    width: 46px; /*no*/
+    .font(18px, #fff);
     .positionLeft(@left: 0px);
   }
   .header-title{
-    .font(40px, #fff);
+    .font(20px, #fff);
+    font-weight: bold;
   }
   .header-link{
-    .font(40px, #fff);
+    .font(20px, #fff);
     .positionRight;
   }
   .header-link-confim{
-    font-size: 32px;
+    font-size: 16px;
   }
   .nav-slide-list{
     .coverScreen(fixed);
-    top: 100px;
+    top: 46px; /*no*/
     display: flex;
     flex-direction: column;
     .nav-link{
-      .font(32px);
+      .font(16px);
       border-bottom: 1Px solid #ddd;
       margin: 0 @common-wd;
-      padding: 35px 20px;
+      padding: 18px 10px; /*no*/
       position: relative;
       &:before{
         position: absolute;
-        right: 10px;
+        right: 5px; /*no*/
         top: 50%;
         transform: translate3d(0, -50%, 0);
         color: #666;

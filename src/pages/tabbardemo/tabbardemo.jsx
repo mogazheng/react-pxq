@@ -2,6 +2,8 @@ import { TabBar } from 'antd-mobile';
 import React, {Component} from 'react'
 import './tabbardemo.less'
 import PublicHeader from "../../components/header/header"
+import Avatar from "../../components/avatar/avatar"
+import AdviceItem from "../../components/adviceitem/adviceitem"
 
 export default class TabBarExample extends Component {
   constructor(props) {
@@ -16,27 +18,7 @@ export default class TabBarExample extends Component {
   renderContent(pageText) {
     return (
       <div className="content-scroll">
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-           onClick={(e) => {
-             e.preventDefault();
-             this.setState({
-               hidden: !this.state.hidden,
-             });
-           }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-           onClick={(e) => {
-             e.preventDefault();
-             this.setState({
-               fullScreen: !this.state.fullScreen,
-             });
-           }}
-        >
-          Click to switch fullscreen
-        </a>
+        <AdviceItem />
       </div>
     );
   }
