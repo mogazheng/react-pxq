@@ -4,6 +4,8 @@ import './tabbardemo.less'
 import PublicHeader from "../../components/header/header"
 import Avatar from "../../components/avatar/avatar"
 import AdviceItem from "../../components/adviceitem/adviceitem"
+import HomeSection from "../7mhome/homesection/homesection"
+import Divider from "../../components/divider/divider"
 
 export default class TabBarExample extends Component {
   constructor(props) {
@@ -18,7 +20,16 @@ export default class TabBarExample extends Component {
   renderContent(pageText) {
     return (
       <div className="content-scroll">
+        <div style={{backgroundColor: 'white'}}>
+        <HomeSection title="专家推介" moreText="全部推介"/>
+        <Divider/>
         <AdviceItem />
+        <Divider/>
+        <AdviceItem />
+        <Divider/>
+        <AdviceItem />
+          <Divider isFull/>
+        </div>
       </div>
     );
   }
