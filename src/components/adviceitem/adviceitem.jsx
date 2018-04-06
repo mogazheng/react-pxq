@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Avatar from "../avatar/avatar"
 import './adviceitem.less'
-import {Button} from 'antd-mobile'
-
-const UserType = ['用户','网红投手','7M分析师']
 
 export default class AdviceItem extends Component{
 
@@ -30,21 +27,23 @@ export default class AdviceItem extends Component{
       awayname: "济州联",
       cost: 38,
       ispay: 0
-    }
+    },
+    userType: ["普通用户", "网红投手", "7M分析师", "7M特邀专家", "好波名家"]
   }
 
   static propTypes={
-    item: PropTypes.object
+    item: PropTypes.object,
+    userType: PropTypes.array
   }
 
   render(){
-    let {item} = this.props
+    let {item, userType} = this.props
     return (
       <div className="advice-item">
         <div className="advice-user">
           <Avatar className="advice-user-pic" url={item.face} style={{display: 'inline-block'}} isVip/>
           <p>{item.nickname}</p>
-          <i className="advice-user-type">{UserType[item.usertype]}</i>
+          <i className="advice-user-type">{userType[item.usertype]}</i>
         </div>
       <div className="advice-desc">
         <div className="advice-match">

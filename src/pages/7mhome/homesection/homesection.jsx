@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 export default class HomeSection extends Component{
 
   static propTypes={
-    title: PropTypes.string.required,
+    title: PropTypes.string.isRequired,
     moreText: PropTypes.string,
     onPress: PropTypes.func
   }

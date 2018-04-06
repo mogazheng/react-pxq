@@ -1,5 +1,6 @@
 import axios from 'axios';
 import envconfig from '@/envconfig/envconfig';
+import http from 'axios/lib/adapters/http'
 /**
  * 主要params参数
  * @params method {string} 方法名
@@ -14,20 +15,23 @@ import envconfig from '@/envconfig/envconfig';
  * 其他更多拓展参看axios文档后 自行拓展
  * 注意：params中的数据会覆盖method url 参数，所以如果指定了这2个参数则不需要在params中带入
 */
-
 export default class Server {
   axios(method, url, params){
     return new Promise((resolve, reject) => {
       if(typeof params !== 'object') params = {};
       let _option = params;
       _option = {
+        adapter: http,
         method,
         url,
         baseURL: envconfig.baseURL,
         timeout: 30000,
         params: null,
         data: null,
-        headers: null,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         withCredentials: true, //是否携带cookies发起请求
         validateStatus:(status)=>{
             return status >= 200 && status < 300;

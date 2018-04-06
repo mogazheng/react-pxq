@@ -19,7 +19,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const px2rem = require('postcss-px2rem');
+// const px2rem = require('postcss-px2rem');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -209,7 +209,7 @@ module.exports = {
                   // @remove-on-eject-end
                 },
               },
-           
+
             ]
           },
           // "postcss" loader applies autoprefixer to our CSS.
@@ -245,7 +245,7 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
-                    px2rem({remUnit: 75})//设计稿根据750px(iphone6)
+                    // px2rem({remUnit: 75})//设计稿根据750px(iphone6)
                   ],
                 },
               },

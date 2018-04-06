@@ -10,7 +10,7 @@ class API extends Server{
    */
   async uploadImg(params = {}){
     try{
-      let result = await this.axios('post', 'http://cangdu.org:8001/v1/addimg/shop', params); 
+      let result = await this.axios('post', 'http://cangdu.org:8001/v1/addimg/shop', params);
       if(result && result.status === 1){
         return result;
       }else{
@@ -19,6 +19,25 @@ class API extends Server{
           response: result,
           data: params,
           url: 'http://cangdu.org:8001/v1/addimg/shop',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+
+  async get7mHome(){
+    try{
+      let result = await this.axios('get', "/guess/websquare.php?20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=1522998007427");
+      if(result && (result.data instanceof Object) && result.http_code === 200){
+        return result.data;
+      }else{
+        let err = {
+          tip: '获取记录数据失败',
+          response: result,
+          data: "20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=1522998007427",
+          url: '/guess/websquare.php',
         }
         throw err;
       }
@@ -36,7 +55,7 @@ class API extends Server{
    */
   async getRecord(params = {}){
     try{
-      let result = await this.axios('get', `/shopro/data/record/${params.type}`); 
+      let result = await this.axios('get', `/shopro/data/record/${params.type}`);
       if(result && (result.data instanceof Object) && result.http_code === 200){
         return result.data;
       }else{
@@ -62,7 +81,7 @@ class API extends Server{
    */
   async getProduction(params = {}){
     try{
-      let result = await this.axios('get', '/shopro/data/products', params); 
+      let result = await this.axios('get', '/shopro/data/products', params);
       if(result && (result.data instanceof Object) && result.http_code === 200){
         return result.data.data||[];
       }else{
@@ -88,7 +107,7 @@ class API extends Server{
    */
   async getBalance(params = {}){
     try{
-      let result = await this.axios('get', '/shopro/data/balance', params); 
+      let result = await this.axios('get', '/shopro/data/balance', params);
       if(result && (result.data instanceof Object) && result.http_code === 200){
         return result.data.data||{};
       }else{

@@ -1,12 +1,12 @@
 /**
  * 全局配置文件
  */
-let baseURL; 
+let baseURL;
 let imgUrl = '//cangdu.org:8001/img/';
 if(process.env.NODE_ENV === 'development'){
-  baseURL = '//cangdu.org';
+  baseURL = 'http://interface.mobi.7m.com.cn';
 }else{
-  baseURL = '//cangdu.org';
+  baseURL = 'http://interface.mobi.7m.com.cn';
 }
 
 

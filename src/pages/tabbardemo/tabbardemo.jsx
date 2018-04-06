@@ -2,36 +2,38 @@ import { TabBar } from 'antd-mobile';
 import React, {Component} from 'react'
 import './tabbardemo.less'
 import PublicHeader from "../../components/header/header"
-import Avatar from "../../components/avatar/avatar"
-import AdviceItem from "../../components/adviceitem/adviceitem"
-import HomeSection from "../7mhome/homesection/homesection"
-import Divider from "../../components/divider/divider"
+import SevenmHome from "../7mhome/7mhome"
+import SevenScore from "../7mscore/7mscore"
+
+const TAB = {
+  HOME: Symbol("home"),
+  SCORE: Symbol("score"),
+  ADVICE: Symbol("advice"),
+  MORE: Symbol("more"),
+  MINE: Symbol("mine")
+}
 
 export default class TabBarExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'home',
-      hidden: false,
-      fullScreen: false,
+      selectedTab: TAB.HOME,
+      hidden: false
     };
   }
 
-  renderContent(pageText) {
-    return (
-      <div className="content-scroll">
-        <div style={{backgroundColor: 'white'}}>
-        <HomeSection title="专家推介" moreText="全部推介"/>
-        <Divider/>
-        <AdviceItem />
-        <Divider/>
-        <AdviceItem />
-        <Divider/>
-        <AdviceItem />
-          <Divider isFull/>
-        </div>
-      </div>
-    );
+  renderContent(page) {
+
+    switch (page){
+      case TAB.HOME:
+        return <SevenmHome/>
+      case TAB.SCORE:
+      case TAB.ADVICE:
+      case TAB.MORE:
+      case TAB.MINE:
+      default:
+        return <SevenScore/>
+    }
   }
 
   render() {
@@ -52,15 +54,15 @@ export default class TabBarExample extends Component {
             }
             selectedIcon={<div className="home-icon icon-on"/>
             }
-            selected={this.state.selectedTab === 'home'}
+            selected={this.state.selectedTab === TAB.HOME}
             onPress={() => {
               this.setState({
-                selectedTab: 'home',
+                selectedTab: TAB.HOME,
               });
             }}
             data-seed="logId"
           >
-            {this.renderContent('home')}
+            {this.renderContent(TAB.HOME)}
           </TabBar.Item>
           <TabBar.Item
             icon={<div className="score-icon"/>
@@ -69,15 +71,15 @@ export default class TabBarExample extends Component {
             }
             title="比分"
             key="score"
-            selected={this.state.selectedTab === 'score'}
+            selected={this.state.selectedTab === TAB.SCORE}
             onPress={() => {
               this.setState({
-                selectedTab: 'score',
+                selectedTab: TAB.SCORE,
               });
             }}
             data-seed="logId1"
           >
-            {this.renderContent('score')}
+            {this.renderContent(TAB.SCORE)}
           </TabBar.Item>
           <TabBar.Item
             icon={<div className="advice-icon"/>
@@ -86,42 +88,42 @@ export default class TabBarExample extends Component {
             }
             title="推介"
             key="advice"
-            selected={this.state.selectedTab === 'advice'}
+            selected={this.state.selectedTab === TAB.ADVICE}
             onPress={() => {
               this.setState({
-                selectedTab: 'advice',
+                selectedTab: TAB.ADVICE,
               });
             }}
           >
-            {this.renderContent('advice')}
+            {this.renderContent(TAB.ADVICE)}
           </TabBar.Item>
           <TabBar.Item
             icon={<div className="more-icon"/>}
             selectedIcon={<div className="more-icon icon-on"/>}
             title="更多"
             key="more"
-            selected={this.state.selectedTab === 'more'}
+            selected={this.state.selectedTab === TAB.MORE}
             onPress={() => {
               this.setState({
-                selectedTab: 'more',
+                selectedTab: TAB.MORE,
               });
             }}
           >
-            {this.renderContent('more')}
+            {this.renderContent(TAB.MORE)}
           </TabBar.Item>
           <TabBar.Item
             icon={<div className="mine-icon"/>}
             selectedIcon={<div className="mine-icon icon-on"/>}
             title="我"
             key="mine"
-            selected={this.state.selectedTab === 'mine'}
+            selected={this.state.selectedTab === TAB.MINE}
             onPress={() => {
               this.setState({
-                selectedTab: 'mine',
+                selectedTab: TAB.MINE,
               });
             }}
           >
-            {this.renderContent('mine')}
+            {this.renderContent(TAB.MINE)}
           </TabBar.Item>
         </TabBar>
       </div>
