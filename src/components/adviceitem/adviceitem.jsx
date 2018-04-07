@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Avatar from "../avatar/avatar"
 import './adviceitem.less'
+import '../../utils/dateFormat'
 
 export default class AdviceItem extends Component{
 
@@ -28,30 +29,60 @@ export default class AdviceItem extends Component{
       cost: 38,
       ispay: 0
     },
-    userType: ["普通用户", "网红投手", "7M分析师", "7M特邀专家", "好波名家"]
+    userType: ["普通用户", "网红投手", "7M分析师", "7M特邀专家", "好波名家"],
+    type: "home"
   }
 
   static propTypes={
     item: PropTypes.object,
-    userType: PropTypes.array
+    userType: PropTypes.array,
+    type: PropTypes.string
+  }
+
+  getData(){
+    let {item} = this.props
+    if(!item)
+      return {}
+    if(this.props.type === "home"){
+      return {
+        userPic: item.user_pic,
+        userName: item.user_name,
+        userType: item.user_type,
+        homeTeam: item.home_name,
+        guestTeam: item.away_name,
+        startTime: new Date(item.time*1000).Format("yyyy-MM-dd HH:mm"),
+        cost: item.look_cost
+      }
+    }else if(this.props.type === "advice"){
+      return {
+        userPic: item.face,
+        userName: item.nickname,
+        userType: item.usertype,
+        homeTeam: item.homename,
+        guestTeam: item.awayname,
+        startTime: item.starttime.substring(0, item.starttime.length - 3),
+        cost: item.cost
+      }
+    }
   }
 
   render(){
-    let {item, userType} = this.props
+    let {userType} = this.props
+    let item = this.getData()
     return (
       <div className="advice-item">
         <div className="advice-user">
-          <Avatar className="advice-user-pic" url={item.face} style={{display: 'inline-block'}} isVip/>
-          <p>{item.nickname}</p>
-          <i className="advice-user-type">{userType[item.usertype]}</i>
+          <Avatar className="advice-user-pic" url={item.userPic} style={{display: 'inline-block'}} isVip/>
+          <p>{item.userName}</p>
+          <i className="advice-user-type">{userType[item.userType]}</i>
         </div>
       <div className="advice-desc">
         <div className="advice-match">
-          <p>{`${item.homename} VS ${item.awayname}`}</p>
-          <p style={{marginTop: '5px'}}><span className="advice-match-time">{`开赛时间：${item.starttime.substring(0, item.starttime.length - 3)}`}</span></p>
+          <p>{`${item.homeTeam} VS ${item.guestTeam}`}</p>
+          <p style={{marginTop: '5px'}}><span className="advice-match-time">{`开赛时间：${item.startTime}`}</span></p>
         </div>
         <div className="advive-cost">
-          {`${item.cost}M钻查看`}
+          {item.cost === 0 ? "免费查看" : `${item.cost}M钻查看`}
         </div>
       </div>
       </div>

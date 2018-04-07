@@ -69,21 +69,14 @@ export default class SevenmHome extends Component {
             <HomeSection title="专家推介" moreText="全部推介"/>
             <Divider/>
             {
-              data.expert_recommendation && data.expert_recommendation.map((advice, index) =>{
+              data.expert_recommendation && data.expert_recommendation.map((advice) =>{
                 console.log(advice)
                 return [
-                  <AdviceItem key={advice.id} item={advice}/>,
-                  index === data.expert_recommendation.length - 1 && (<Divider key={0}/>)
+                  <AdviceItem key={advice.id || advice.recommend_id} item={advice} type="home"/>,
+                  <Divider key={0}/>
               ]
               })
             }
-            <Divider/>
-            <AdviceItem/>
-            <Divider/>
-            <AdviceItem/>
-            <Divider/>
-            <AdviceItem/>
-            <Divider/>
             <p style={{
               color: '#ff8600',
               fontSize: '16px',
@@ -97,15 +90,11 @@ export default class SevenmHome extends Component {
             <Divider isFull/>
             <HomeSection title="7M分析师"/>
             <Divider/>
-            <div className="expert-block">
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
-              <ExpertAvatar className="expert"/>
+            <div className="expert-block">{
+              data["7m_expert"] && data["7m_expert"].map((expert) =>{
+                return <ExpertAvatar key={expert.user} className="expert" expert={expert}/>
+              })
+            }
             </div>
             <Divider isFull/>
           </div>

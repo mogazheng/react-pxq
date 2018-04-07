@@ -4,9 +4,9 @@
 let baseURL;
 let imgUrl = '//cangdu.org:8001/img/';
 if(process.env.NODE_ENV === 'development'){
-  baseURL = 'http://localhost:3000';
+  baseURL = 'http://192.168.31.176:3000';
 }else{
-  baseURL = 'http://localhost:3000';
+  baseURL = 'http://192.168.31.176:3000';
 }
 
 
