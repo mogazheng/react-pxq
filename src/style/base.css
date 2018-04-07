@@ -65,7 +65,7 @@ html,body{
 }
 
 .tab-content {
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: 50px; /*no*/
   padding-bottom: 50px; /*no*/

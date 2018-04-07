@@ -22,6 +22,12 @@
     "test": "node scripts/test.js --env=jsdom",
     "eject": "node scripts/eject.js"
   },
+  "proxy": {
+    "/guess": {
+      "target": "http://interface.mobi.7m.com.cn",
+      "changeOrigin": true
+    }
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"

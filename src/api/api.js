@@ -30,7 +30,7 @@ class API extends Server{
   async get7mHome(){
     try{
       let result = await this.axios('get', "/guess/websquare.php?20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=1522998007427");
-      if(result && (result.data instanceof Object) && result.http_code === 200){
+      if(result && (result.data instanceof Object) && result.status === 1){
         return result.data;
       }else{
         let err = {

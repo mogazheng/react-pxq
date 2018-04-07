@@ -4,9 +4,9 @@
 let baseURL;
 let imgUrl = '//cangdu.org:8001/img/';
 if(process.env.NODE_ENV === 'development'){
-  baseURL = 'http://interface.mobi.7m.com.cn';
+  baseURL = 'http://localhost:3000';
 }else{
-  baseURL = 'http://interface.mobi.7m.com.cn';
+  baseURL = 'http://localhost:3000';
 }
 
 
