@@ -24,7 +24,6 @@ export default class SevenmHome extends Component {
       refreshing: true
     })
     API.get7mHome().then((result) => {
-      console.log(result)
       this.setState({
         refreshing: false,
         data: result
@@ -70,7 +69,6 @@ export default class SevenmHome extends Component {
             <Divider/>
             {
               data.expert_recommendation && data.expert_recommendation.map((advice) =>{
-                console.log(advice)
                 return [
                   <AdviceItem key={advice.id || advice.recommend_id} item={advice} type="home"/>,
                   <Divider key={0}/>
@@ -92,7 +90,7 @@ export default class SevenmHome extends Component {
             <Divider/>
             <div className="expert-block">{
               data["7m_expert"] && data["7m_expert"].map((expert) =>{
-                return <ExpertAvatar key={expert.user} className="expert" expert={expert}/>
+                return <ExpertAvatar key={expert.user_id} className="expert" expert={expert}/>
               })
             }
             </div>
