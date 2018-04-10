@@ -26,6 +26,10 @@
     "/guess": {
       "target": "http://interface.mobi.7m.com.cn",
       "changeOrigin": true
+    },
+    "/webexpert": {
+      "target": "http://interface.mobi.7m.com.cn",
+      "changeOrigin": true
     }
   },
   "jest": {

@@ -4,6 +4,7 @@ import './tabbardemo.less'
 import PublicHeader from "../../components/header/header"
 import SevenmHome from "../7mhome/7mhome"
 import SevenScore from "../7mscore/7mscore"
+import SevenAdvice from "../7madvice/7madvice"
 
 const TAB = {
   HOME: Symbol("home"),
@@ -27,8 +28,9 @@ export default class TabBarExample extends Component {
     switch (page){
       case TAB.HOME:
         return <SevenmHome/>
-      case TAB.SCORE:
       case TAB.ADVICE:
+        return <SevenAdvice/>
+      case TAB.SCORE:
       case TAB.MORE:
       case TAB.MINE:
       default:

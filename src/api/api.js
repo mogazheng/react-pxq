@@ -28,19 +28,28 @@ class API extends Server{
   }
 
   async get7mHome(){
+    let url = `/guess/websquare.php?20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=${new Date().getMilliseconds()}`
     try{
-      let result = await this.axios('get', "/guess/websquare.php?20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=1522998007427");
+      let result = await this.axios('get', url);
       if(result && (result.data instanceof Object) && result.status === 1){
         return result.data;
       }else{
         let err = {
-          tip: '获取记录数据失败',
           response: result,
-          data: "20180316&uid=0&token=0&plat=3&lan=1&expert_no_shield=1&bettype=1&time=1522998007427",
-          url: '/guess/websquare.php',
+          url: url,
         }
         throw err;
       }
+    }catch(err){
+      throw err;
+    }
+  }
+
+  async get7mAdvice(lastId = 0){
+    let url = `/webexpert/index.php?d=recommend&f=recommendlist&v=${new Date().getMilliseconds()}&uid=0&token=0&plat=3&lan=1&lastid=${lastId}`
+    try{
+      let result = await this.axios('get', url);
+      return result;
     }catch(err){
       throw err;
     }

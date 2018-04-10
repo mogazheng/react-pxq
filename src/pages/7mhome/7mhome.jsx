@@ -7,6 +7,7 @@ import ExpertAvatar from "../../components/expertavatar/exertavatar"
 import API from "../../api/api"
 import {PullToRefresh} from 'antd-mobile'
 import ReactDOM from 'react-dom'
+import RefreshLoading from "../../components/refreshloading/refreshloading"
 
 export default class SevenmHome extends Component {
 
@@ -70,7 +71,7 @@ export default class SevenmHome extends Component {
             {
               data.expert_recommendation && data.expert_recommendation.map((advice) =>{
                 return [
-                  <AdviceItem key={advice.id || advice.recommend_id} item={advice} type="home"/>,
+                  <AdviceItem key={advice.recommend_id} item={advice} type="home"/>,
                   <Divider key={0}/>
               ]
               })

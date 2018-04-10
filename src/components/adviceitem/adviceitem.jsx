@@ -61,20 +61,49 @@ export default class AdviceItem extends Component{
         homeTeam: item.homename,
         guestTeam: item.awayname,
         startTime: item.starttime.substring(0, item.starttime.length - 3),
-        cost: item.cost
+        cost: item.cost,
+        recent: this.betResult(item.betresult, item.betjoincount)
+      }
+    }
+  }
+
+  betResult(data, count){
+    let _dataArr = data.split(','),//分割字符串
+      _num = 0,
+      _str = '',
+      _result = '';
+
+    if(count != '' && count != null && count > 1) {//战绩不为空或2连胜以上
+      for (var i = 0; i < count; i++) {
+        if (_dataArr[i] == 1) {//查询胜场
+          _num++;
+        }
+      }
+
+      if(_num == count){//连胜
+        _result = `${_num}连胜`;
+      }else{//几中几
+        _result = `${count}中${_num}`;
+      }
+
+      if(_num / count >= 0.666){
+        return _result;
       }
     }
   }
 
   render(){
-    let {userType} = this.props
+    let {userType, type} = this.props
     let item = this.getData()
     return (
       <div className="advice-item">
         <div className="advice-user">
           <Avatar className="advice-user-pic" url={item.userPic} style={{display: 'inline-block'}} isVip/>
+          <div className="advice-user-name">
           <p>{item.userName}</p>
           <i className="advice-user-type">{userType[item.userType]}</i>
+            {type === 'advice' && item.recent && <p className="advice-user-recent">近期战绩：<span>{item.recent}</span></p>}
+          </div>
         </div>
       <div className="advice-desc">
         <div className="advice-match">
